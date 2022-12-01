@@ -4,12 +4,12 @@ namespace portalium\todo\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use portalium\todo\models\TodoContent;
+use portalium\todo\models\Todo;
 
 /**
- * TodoContentSearch represents the model behind the search form of `portalium\todo\models\TodoContent`.
+ * ContentSearch represents the model behind the search form of `portalium\todo\models\Content`.
  */
-class TodoContentSearch extends TodoContent
+class TodoSearch extends Todo
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class TodoContentSearch extends TodoContent
     public function rules()
     {
         return [
-            [['id_todo', 'id_category', 'is_done'], 'integer'],
-            [['content', 'time'], 'safe'],
+            [['id_todo', 'is_done'], 'integer'],
+            [['text', 'time'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class TodoContentSearch extends TodoContent
      */
     public function search($params)
     {
-        $query = TodoContent::find();
+        $query = Todo::find();
 
         // add conditions that should always apply here
 
@@ -60,11 +60,10 @@ class TodoContentSearch extends TodoContent
         $query->andFilterWhere([
             'id_todo' => $this->id_todo,
             'time' => $this->time,
-            'id_category' => $this->id_category,
             'is_done' => $this->is_done,
         ]);
 
-        $query->andFilterWhere(['like', 'content', $this->content]);
+        $query->andFilterWhere(['like', 'text', $this->text]);
 
         return $dataProvider;
     }

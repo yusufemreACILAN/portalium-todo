@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var portalium\todo\models\TodoContentSearch $model */
+/** @var portalium\todo\models\TodoSearch $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="todo-content-search">
+<div class="todo-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,11 +17,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_todo') ?>
 
-    <?= $form->field($model, 'content') ?>
+    <?= $form->field($model, 'text') ?>
 
     <?= $form->field($model, 'time') ?>
-
-    <?= $form->field($model, 'id_category') ?>
 
     <?= $form->field($model, 'is_done') ?>
 

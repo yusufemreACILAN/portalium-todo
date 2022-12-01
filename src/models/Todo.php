@@ -3,18 +3,36 @@
 namespace portalium\todo\models;
 
 use Yii;
+use portalium\todo\Module;
 
 /**
  * This is the model class for table "todo_content".
  *
  * @property int $id_todo
- * @property string $content
+ * @property string $text
  * @property string $time
- * @property int $id_category
  * @property int $is_done
  */
-class TodoContent extends \yii\db\ActiveRecord
+class Todo extends \yii\db\ActiveRecord
 {
+    const STATUS = [
+        'passive' => 0,
+        'active' => 1
+    ];
+    public static function getStatusList()
+    {
+        //return value and label
+        return [
+            'STATUS' => [
+                self::STATUS['passive'] => Module::t('Passive'),
+                self::STATUS['active'] => Module::t('Active')
+            ]
+        ];
+    }
+  
+
+    
+    
     /**
      * {@inheritdoc}
      */
@@ -29,12 +47,13 @@ class TodoContent extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content', 'id_category'], 'required'],
+            [['text'], 'required'],
             [['time'], 'safe'],
-            [['id_category', 'is_done'], 'integer'],
-            [['content'], 'string', 'max' => 255],
+            [['is_done'], 'integer'],
+            [['text'], 'string', 'max' => 255],
         ];
     }
+
 
     /**
      * {@inheritdoc}
@@ -43,10 +62,10 @@ class TodoContent extends \yii\db\ActiveRecord
     {
         return [
             'id_todo' => 'Id Todo',
-            'content' => 'Content',
+            'text' => 'Text',
             'time' => 'Time',
-            'id_category' => 'Id Category',
             'is_done' => 'Is Done',
+            'status' => 'Status',
         ];
     }
 }

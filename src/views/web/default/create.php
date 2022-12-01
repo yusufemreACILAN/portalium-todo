@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var portalium\todo\models\TodoContent $model */
+/** @var portalium\todo\models\Content $model */
 
-$this->title = Yii::t('app', 'Create Todo Content');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Todo Contents'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Create Content');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contents'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="todo-content-create">
+<div class="todo-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

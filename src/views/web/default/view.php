@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var portalium\todo\models\TodoContent $model */
+/** @var portalium\todo\models\Content $model */
 
 $this->title = $model->id_todo;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Todo Contents'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contents'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="todo-content-view">
+<div class="todo-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,9 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id_todo',
-            'content',
+            'text',
             'time',
-            'id_category',
             'is_done',
         ],
     ]) ?>
