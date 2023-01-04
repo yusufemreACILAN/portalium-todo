@@ -9,14 +9,14 @@ class m211115_010203_todo extends Migration
     public function safeUp()
     {
         $tableOptions = 'ENGINE=InnoDB';
-        $this->createTable(Module::$tablePrefix . "todo",
+        $this->createTable(Module::$tablePrefix . "task",
             
             [
                 'id_todo'=> $this->primaryKey(),
                 'text'=> $this->string(255)->notNull(),//required is notNull() label,name,slug,title,text
                 'date_create'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
                 //'id_category'=> $this->integer(11)->notNull(),
-                'is_done'=>$this ->boolean('required')
+                'status'=>$this ->boolean('required')
 
                 
             ],$tableOptions

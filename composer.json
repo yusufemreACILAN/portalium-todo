@@ -1,7 +1,7 @@
 {
 	"name" : "portalium/portalium-todo",
 	"description" : "Module todo for Portalium",
-	"type" : "yii2-extension",
+	"type" : "portalium-module",
 	"license": "MIT",
 	"homepage" : "https://portalium.dev",
 	"authors" : [
