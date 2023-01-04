@@ -60,11 +60,11 @@ Panel::begin([
 
             'text',
             'time',
-            'is_done',
-            [
+
+             [
                 'attribute' => 'status',
-                'value' => Todo::getStatusList()['STATUS'][$model->status],//I am still working on it
-            ],
+                'value' => Todo::getStatusList()['STATUS'][$model->STATUS],//I am still working on it
+             ],
 
             [
                 'class' => ActionColumn::className(),
@@ -77,4 +77,4 @@ Panel::begin([
     ]); Panel::end() ?>
 
    
-<?php Panel::end();
+
