@@ -9,11 +9,11 @@ use portalium\todo\Module;
  * This is the model class for table "todo_content".
  *
  * @property int $id_todo
- * @property string $text
+ * @property string $title
  * @property string $time
  * @property int $is_done
  */
-class Todo extends \yii\db\ActiveRecord
+class Task extends \yii\db\ActiveRecord
 {
     const STATUS = [
         'passive' => 0,
@@ -24,10 +24,8 @@ class Todo extends \yii\db\ActiveRecord
     {
         //return value and label
         return [
-            'STATUS' => [
-                self::STATUS['passive'] => Module::t('Passive'),
-                self::STATUS['active'] => Module::t('Active')
-            ]
+            self::STATUS['passive'] => Module::t('Passive'),
+            self::STATUS['active'] => Module::t('Active')
         ];
     }
     
@@ -36,7 +34,7 @@ class Todo extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'todo_todo';
+        return Module::$tablePrefix . "task";
     }
 
     /**
@@ -45,10 +43,10 @@ class Todo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text'], 'required'],
-            [['time'], 'safe'],
+            [['id_task'], 'required'],
+            [['date_create'], 'safe'],
             [['status'], 'integer'],
-            [['text'], 'string', 'max' => 255],
+            [['title'], 'string', 'max' => 255],
         ];
     }
 
@@ -59,9 +57,9 @@ class Todo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_todo' => 'Id Todo',
-            'text' => 'Text',
-            'time' => 'Time',
+            'id_task' => 'Id Task',
+            'title' => 'Title',         //text ismini değiştir title koy.
+            'date_create' => 'Date Create',
             'status' => 'Status',
         ];
     }

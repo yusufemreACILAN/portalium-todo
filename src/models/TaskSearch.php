@@ -4,12 +4,12 @@ namespace portalium\todo\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use portalium\todo\models\Todo;
+use portalium\todo\models\Task;
 
 /**
  * ContentSearch represents the model behind the search form of `portalium\todo\models\Content`.
  */
-class TodoSearch extends Todo
+class TaskSearch extends Task
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class TodoSearch extends Todo
     public function rules()
     {
         return [
-            [['id_todo', 'is_done'], 'integer'],
-            [['text', 'time'], 'safe'],
+            [['id_task', 'status'], 'integer'],
+            [['title', 'date_create'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class TodoSearch extends Todo
      */
     public function search($params)
     {
-        $query = Todo::find();
+        $query = Task::find();
 
         // add conditions that should always apply here
 
@@ -58,12 +58,12 @@ class TodoSearch extends Todo
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id_todo' => $this->id_todo,
-            'time' => $this->time,
-            'is_done' => $this->is_done,
+            'id_task' => $this->id_task,
+            'date_create' => $this->date_create,
+            'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'text', $this->text]);
+        $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }

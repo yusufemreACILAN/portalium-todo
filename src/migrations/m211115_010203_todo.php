@@ -2,6 +2,7 @@
 
 use yii\db\Schema;
 use yii\db\Migration;
+use portalium\todo\Module;
 
 
 class m211115_010203_todo extends Migration
@@ -13,7 +14,7 @@ class m211115_010203_todo extends Migration
             
             [
                 'id_task'=> $this->primaryKey(),
-                'text'=> $this->string(255)->notNull(),//required is notNull() label,name,slug,title,text
+                'title'=> $this->string(255)->notNull(),//required is notNull() label,name,slug,title,text
                 'date_create'=> $this->datetime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
                 //'id_category'=> $this->integer(11)->notNull(),
                 'status'=>$this ->boolean('required')
@@ -42,4 +43,3 @@ class m211115_010203_todo extends Migration
         // $this->dropTable('{{%todo_category}}');
     }
 }
-?>
